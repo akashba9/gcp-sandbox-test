@@ -1,7 +1,7 @@
 steps:
   # Build the container images
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '--network=cloudbuild', 'us-central1-docker.pkg.dev/ford-aad47af9530b55be4a9cc1ce/gcp-sandbox-test/my-app', '.']
+    args: ['build', '--network=cloudbuild', '-t','us-central1-docker.pkg.dev/ford-aad47af9530b55be4a9cc1ce/gcp-sandbox-test/my-app', '.']
   # Push the container image to artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'us-central1-docker.pkg.dev/ford-aad47af9530b55be4a9cc1ce/gcp-sandbox-test/my-app']
