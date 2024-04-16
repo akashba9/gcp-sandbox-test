@@ -1,0 +1,15 @@
+steps:
+  # Build the container image
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/ford-aad47af9530b55be4a9cc1ce/gcp-sandbox-test/my-app', '.']
+  # Push the container image to artifact Registry
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'us-central1-docker.pkg.dev/ford-aad47af9530b55be4a9cc1ce/gcp-sandbox-test/my-app']
+  # Deploy container image to Cloud Run
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args: ['run', 'deploy', 'spring-sandbox-test-jdk-11', '--image', 'us-central1-docker.pkg.dev/ford-aad47af9530b55be4a9cc1ce/gcp-sandbox-test/my-app', '--region', 'us-central1']
+images:
+  - us-central1-docker.pkg.dev/ford-aad47af9530b55be4a9cc1ce/gcp-sandbox-test/my-app
+
+
