@@ -1,5 +1,4 @@
-FROM gcr.io/cloud-builders/gcloud
-RUN git config --system credential.helper gcloud.sh
+FROM eclipse-temurin:11-jdk-alpine
 VOLUME /tmp
 CMD ["gradlew","clean","bootJar","copy"]
 COPY app/*.jar app.jar
