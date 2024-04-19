@@ -1,7 +1,7 @@
 plugins {
 	id 'java'
 	id 'maven-publish'
-	id 'org.springframework.boot' version '2.5.14'
+	id 'org.springframework.boot' version '2.7.18'
 	id 'gradle-boost' version '4.1.0'
 	id 'org.sonarqube' version '2.7.1'
 	id 'jacoco'
