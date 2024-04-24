@@ -1,13 +1,14 @@
 steps:
   # Build the container image
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'us-central1-docker.pkg.dev/ford-aad47af9530b55be4a9cc1ce/gcp-sandbox-test/my-app', '.','--build-arg','PROFILE=${_PROFILE}']
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/ford-6bf06009cbce1ec2d09607af/sandbox/my-app', '.','--build-arg','PROFILE=${_PROFILE}']
   # Push the container image to artifact Registry
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'us-central1-docker.pkg.dev/ford-aad47af9530b55be4a9cc1ce/gcp-sandbox-test/my-app']
+    args: ['push', 'us-central1-docker.pkg.dev/ford-6bf06009cbce1ec2d09607af/sandbox/my-app']
   # Deploy container image to Cloud Run
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
-    args: ['run', 'deploy', 'gcp-spring-sandbox-${_PROFILE}', '--image', 'us-central1-docker.pkg.dev/ford-aad47af9530b55be4a9cc1ce/gcp-sandbox-test/my-app', '--region', 'us-central1','--set-env-vars','PROFILE=${_PROFILE}']
+    args: ['run', 'deploy', 'gcp-spring-sandbox-${_PROFILE}', '--image', 'us-central1-docker.pkg.dev/ford-6bf06009cbce1ec2d09607af/sandbox/my-app', '--region', 'us-central1','--set-env-vars','PROFILE=${_PROFILE}']
 images:
   - us-central1-docker.pkg.dev/ford-aad47af9530b55be4a9cc1ce/gcp-sandbox-test/my-app
+
